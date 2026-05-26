@@ -61,7 +61,7 @@ do {
             }
             break;
 
-        case "2": // CRITÉRIO 3 - LISTAR TODOS OS REGISTROS
+        case "2": // CRITÉRIO 3 - LISTAR TODOS OS REGISTROS - GUI
             console.clear();
             console.log("--- LISTA DE JOGOS CADASTRADOS ---");
             
