@@ -65,6 +65,23 @@ switch (op) {
         alert("Erro ao cadastrar! Dados inválidos ou campos deixados em branco.");
         console.log("Erro: Falha ao cadastrar o novo jogo.");
     }
-break;
+   break;
+
+   case "2":
+    console.clear();
+    console.log("===== LISTA DE JOGOS =====");
+    
+    for (let i = 0; i < locadora.length; i++) {
+        let jogo = locadora[i];
+
+         console.log(
+            (i + 1) +". Título: " + jogo.titulo + " | " +
+            "Plataforma: " + jogo.plataforma + " | " +
+            "Gênero: " + jogo.genero + " | " +
+            "Preço: " + jogo.preco.toFixed(2) + " | "
+        );
+    }
+    alert("A lista de jogos foi exibida no console (F12)!");
+    break;
 }
 } while (op !== "4");
