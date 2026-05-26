@@ -6,7 +6,7 @@
    Tema escolhido: Tema 4 - Locadora de Jogos
    ========================================================== */
 
-   const locadoraJogos = 
+   const locadora = 
    [
     
         { titulo: "The Legend of Zelda: Breath of the Wild", plataforma: "Nintendo Switch", genero: "Aventura", preco: 15.00 },
