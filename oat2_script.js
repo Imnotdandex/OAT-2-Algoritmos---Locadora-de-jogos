@@ -1,5 +1,5 @@
 /* ==========================================================
-   OAT2 - Algoritmos
+   OAT2 - Algoritmos e Programação
    Aluno 1: Daniel Alonso dos Santos Guimarães.
    Aluno 2: Andrey dos Passos Alves.
    Aluno 3: Guilherme de Araújo Freitas.
