@@ -18,7 +18,7 @@ const locadoraJogos = [
 // Variável para armazenar a opção do menu
 let opcao;
 
-// 2. LOOP PRINCIPAL DO SISTEMA (do-while - Requisito obrigatório)
+// 2. LOOP PRINCIPAL DO SISTEMA (do-while - Requisito obrigatório) - GUI
 do {
     // Exibe o menu principal via prompt()
     opcao = prompt(
@@ -30,7 +30,7 @@ do {
         "Escolha uma opção (1-4):"
     );
 
-    // 3. DIRECIONAMENTO DAS OPÇÕES (switch - Requisito obrigatório)
+    // 3. DIRECIONAMENTO DAS OPÇÕES (switch - Requisito obrigatório) - GUI
     switch (opcao) {
         
         case "1": // CRITÉRIO 3 - CADASTRAR NOVO REGISTRO
