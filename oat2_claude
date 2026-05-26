@@ -1,0 +1,147 @@
+// ============================================================
+//   LOCADORA DE JOGOS — Sistema de Gerenciamento
+//   Cole este código no Console do navegador (F12) e execute
+// ============================================================
+
+// ─── ARRAY COM DADOS PRÉ-CADASTRADOS ───────────────────────
+const jogos = [
+  { titulo: "The Last of Us Part II",                      plataforma: "PS4",              genero: "Ação/Aventura",  preco: 18.00 },
+  { titulo: "Elden Ring",                                   plataforma: "PS5",              genero: "RPG/Souls",      preco: 22.00 },
+  { titulo: "Halo Infinite",                                plataforma: "Xbox Series X",    genero: "FPS",            preco: 16.00 },
+  { titulo: "The Legend of Zelda: Tears of the Kingdom",   plataforma: "Nintendo Switch",  genero: "Aventura/RPG",   preco: 20.00 },
+  { titulo: "FIFA 24",                                      plataforma: "PS5",              genero: "Esporte",        preco: 15.00 },
+  { titulo: "Cyberpunk 2077",                               plataforma: "PC",               genero: "RPG/Ação",       preco: 19.00 },
+  { titulo: "God of War Ragnarök",                          plataforma: "PS5",              genero: "Ação/Aventura",  preco: 23.00 },
+];
+
+// ─── FUNÇÕES DO SISTEMA ─────────────────────────────────────
+
+function exibirMenu() {
+  console.log("\n╔══════════════════════════════════════════════╗");
+  console.log("║       🎮  LOCADORA DE JOGOS — SISTEMA        ║");
+  console.log("╠══════════════════════════════════════════════╣");
+  console.log("║  [1]  Cadastrar novo jogo                    ║");
+  console.log("║  [2]  Listar todos os jogos                  ║");
+  console.log("║  [3]  Buscar jogo                            ║");
+  console.log("║  [4]  Sair                                   ║");
+  console.log("╚══════════════════════════════════════════════╝");
+}
+
+function cadastrarJogo() {
+  console.log("\n── CADASTRAR NOVO JOGO ──────────────────────────");
+  const titulo     = prompt("Título do jogo:");
+  const plataforma = prompt("Plataforma (ex: PS5, Xbox, PC, Switch):");
+  const genero     = prompt("Gênero (ex: Ação, RPG, Esporte):");
+  const precoStr   = prompt("Preço de aluguel por dia (R$):");
+
+  if (!titulo || !plataforma || !genero || !precoStr) {
+    console.log("⚠ Cadastro cancelado: nenhum campo pode ficar em branco.");
+    return;
+  }
+
+  const preco = parseFloat(precoStr.replace(",", "."));
+
+  if (isNaN(preco) || preco <= 0) {
+    console.log("⚠ Preço inválido. Cadastro cancelado.");
+    return;
+  }
+
+  jogos.push({ titulo, plataforma, genero, preco });
+  console.log(`\n✅ Jogo cadastrado com sucesso!`);
+  console.log(`   → ${titulo} (${plataforma}) — R$ ${preco.toFixed(2)}/dia`);
+}
+
+function listarJogos() {
+  console.log("\n── ACERVO COMPLETO DE JOGOS ─────────────────────");
+
+  if (jogos.length === 0) {
+    console.log("   Nenhum jogo cadastrado.");
+    return;
+  }
+
+  for (let i = 0; i < jogos.length; i++) {
+    const j = jogos[i];
+    console.log(`\n  [${String(i + 1).padStart(2, "0")}] ${j.titulo}`);
+    console.log(`       Plataforma : ${j.plataforma}`);
+    console.log(`       Gênero     : ${j.genero}`);
+    console.log(`       Aluguel    : R$ ${j.preco.toFixed(2)}/dia`);
+  }
+
+  console.log(`\n  Total: ${jogos.length} jogo(s) no acervo.`);
+}
+
+function buscarJogo() {
+  const termo = prompt("Digite o termo de busca (título, plataforma ou gênero):");
+
+  if (!termo || !termo.trim()) {
+    console.log("⚠ Nenhum termo digitado. Busca cancelada.");
+    return;
+  }
+
+  const t = termo.toLowerCase().trim();
+  console.log(`\n── RESULTADOS PARA: "${termo}" ─────────────────────`);
+
+  let encontrados = 0;
+
+  for (let i = 0; i < jogos.length; i++) {
+    const j = jogos[i];
+
+    if (
+      j.titulo.toLowerCase().includes(t) ||
+      j.plataforma.toLowerCase().includes(t) ||
+      j.genero.toLowerCase().includes(t)
+    ) {
+      encontrados++;
+      console.log(`\n  [${encontrados}] ${j.titulo}`);
+      console.log(`      Plataforma : ${j.plataforma}`);
+      console.log(`      Gênero     : ${j.genero}`);
+      console.log(`      Aluguel    : R$ ${j.preco.toFixed(2)}/dia`);
+    }
+  }
+
+  if (encontrados === 0) {
+    console.log("   Nenhum jogo encontrado com esse termo.");
+  } else {
+    console.log(`\n  ${encontrados} resultado(s) encontrado(s).`);
+  }
+}
+
+// ─── MENU PRINCIPAL COM DO-WHILE ────────────────────────────
+
+function iniciarSistema() {
+  console.log("\n  Inicializando sistema...");
+  console.log(`  ${jogos.length} jogos carregados no acervo.`);
+
+  let opcao;
+
+  do {
+    exibirMenu();
+    opcao = prompt("Escolha uma opção (1, 2, 3 ou 4):");
+
+    switch (opcao) {
+      case "1":
+        cadastrarJogo();
+        break;
+      case "2":
+        listarJogos();
+        break;
+      case "3":
+        buscarJogo();
+        break;
+      case "4":
+        console.log("\n👋 Sistema encerrado. Até logo!\n");
+        break;
+      default:
+        if (opcao !== null) {
+          console.log("⚠ Opção inválida. Escolha entre 1, 2, 3 ou 4.");
+        } else {
+          console.log("\n👋 Sistema encerrado. Até logo!\n");
+          opcao = "4";
+        }
+    }
+
+  } while (opcao !== "4");
+}
+
+// ─── INICIAR ────────────────────────────────────────────────
+iniciarSistema();
