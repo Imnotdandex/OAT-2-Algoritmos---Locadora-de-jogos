@@ -38,6 +38,33 @@ do
       "Escolha uma opção: "
    );
 
+switch (op) {
+   
+   case "1":
+    console.clear();
+    console.log("===== CADASTRANDO NOVO JOGO =====");
 
+    let novoTitulo = prompt("Digite o título do jogo:");
+    let novaPlataforma = prompt("Digite a plataforma (ex: PlayStation, Xbox, PC, Switch):");
+    let novoGenero = prompt("Digite o gênero do jogo:");
+    let novoPreco = parseFloat(prompt("Digite o preço do aluguel (R$):"));
 
+    if (novoTitulo && novaPlataforma && novoGenero && !isNaN(novoPreco)) {
+
+        let novoJogo = {
+            titulo: novoTitulo,
+            plataforma: novaPlataforma,
+            genero: novoGenero,
+            preco: novoPreco
+        };
+
+        locadora.push(novoJogo);
+        alert("Jogo cadastrado com sucesso!");
+        console.log("Sucesso!" + novoJogo.titulo + " foi adicionado à locadora!");
+    } else {
+        alert("Erro ao cadastrar! Dados inválidos ou campos deixados em branco.");
+        console.log("Erro: Falha ao cadastrar o novo jogo.");
+    }
+break;
+}
 } while (op !== "4");
