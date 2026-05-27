@@ -103,6 +103,60 @@ do
 
         break;
 
+        case "3":
+
+            console.clear();
+            console.log("===== Buscando Jogo =====\n");
+            let termobusca = prompt("Digite o título ou parte do nome do Jogo que deseja buscar: ");
+
+            if (termobusca) 
+            {
+
+                let termominusculo = termobusca.toLowerCase();
+                let encontrouresultado = false;
+
+                console.log("Resultado para a busca: " + termobusca + ".")
+
+                for (let i = 0; i < locadora.length; i++)
+                {
+
+                    let jogo = locadora[i];
+
+                    if (jogo.titulo.toLowerCase().includes(termominusculo))
+                    {
+
+                        console.log("Título: " + jogo.titulo + " | Plataforma: " + jogo.plataforma + " | Gênero: " + jogo.genero + " | Preço: " + jogo.preco.toFixed(2) + " |")
+                        encontrouresultado = true;
+
+                    }
+
+                }
+
+            
+
+                if (!encontrouresultado)
+                {
+
+                    console.log("Jogo não encontrado com esse termo.");
+                    alert("Nenhum jogo encontrado");
+
+                }
+                else
+                {
+
+                    alert("Resultados da busca foram exibidos no Console.");
+
+                }
+            } 
+            else
+            {
+
+                alert("Busca cancelada ou termo em branco.");
+
+            }
+
+        break;
+
 
 
     }
