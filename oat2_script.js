@@ -90,10 +90,10 @@ do
                 console.log
                 (
 
-                    (i + 1) +". Título: " + jogo.titulo + " | " +
-                    "Plataforma: " + jogo.plataforma + " | " +
-                    "Gênero: " + jogo.genero + " | " +
-                    "Preço: " + jogo.preco.toFixed(2) + " | "
+                    (i + 1) +". Título: " + jogo.titulo + "\n" +
+                    "Plataforma: " + jogo.plataforma + "\n" +
+                    "Gênero: " + jogo.genero + "\n" +
+                    "Preço: " + jogo.preco.toFixed(2) + "\n"
 
                 );
 
@@ -125,7 +125,7 @@ do
                     if (jogo.titulo.toLowerCase().includes(termominusculo))
                     {
 
-                        console.log("Título: " + jogo.titulo + " | Plataforma: " + jogo.plataforma + " | Gênero: " + jogo.genero + " | Preço: " + jogo.preco.toFixed(2) + " |")
+                        console.log("Título: " + jogo.titulo + "\n" + "Plataforma: " + jogo.plataforma + "\n" + "Gênero: " + jogo.genero + "\n" + "Preço: " + jogo.preco.toFixed(2) + "\n")
                         encontrouresultado = true;
 
                     }
