@@ -157,7 +157,25 @@ do
 
         break;
 
+        case "4":
 
+            console.clear();
+            alert("Assim a história de Dragon Ball chega ao FIM!\n\nSistema finalizado com sucesso.")
+            
+            console.log
+            (
+        
+                "Muito obrigado pela sua atenção.\n\n" +
+                "OBS: Uso do GEMINI apenas para correção de problemas no código,\nde resto tudo foi unicamente feito pelas mãos de seus alunos dandex , ayzz, guililiu." +
+                "\n\nAtenciosamente,\n\n" +
+                "====================\n Estudantes da Rede UniFTC\n===================="
+        
+            );
 
-    }
-} while (op !== "4");
+        break;
+            
+            
+            
+        }
+    } while (op !== "4");
+    
