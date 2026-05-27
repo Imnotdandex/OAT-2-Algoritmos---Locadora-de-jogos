@@ -174,7 +174,7 @@ do
 
         break;
 
-			default: // TRATAMENTO DE OPÇÃO INVÁLIDA
+			default: 
             alert("Opção inválida! Digite um número de 1 a 4.");
             break;
             
