@@ -19,14 +19,15 @@ const locadora =
 
 let op;
 
+op = prompt
+(
+   "SEJAM MUITO BEM VINDOS À LOCADORA\n"+
+   "===== HOSPÍCIO DO SALAME =====\n\n"+
+   "Pressione Enter para prosseguir: "
+);
+
 do
 {
-   op = prompt
-   (
-      "SEJAM MUITO BEM VINDOS À LOCADORA\n"+
-      "===== HOSPÍCIO DO SALAME =====\n\n"+
-      "Pressione Enter para prosseguir: "
-   );
         
    op = prompt
    (
@@ -34,7 +35,8 @@ do
       "[1] Cadastrar novo jogo\n"+
       "[2] Listar jogos\n"+
       "[3] Buscar jogo\n"+
-      "[4] Sair\n\n"+
+      "[4] Remover jogo\n" +
+      "[5] Sair\n\n"+
       "Escolha uma opção: "
    );
 
@@ -46,31 +48,31 @@ do
             console.clear();
             console.log("===== CADASTRANDO NOVO JOGO =====");
 
-            let novoTitulo = prompt("Digite o título do jogo:");
-            let novaPlataforma = prompt("Digite a plataforma (ex: PlayStation, Xbox, PC, Switch):");
-            let novoGenero = prompt("Digite o gênero do jogo:");
-            let novoPreco = parseFloat(prompt("Digite o preço do aluguel (R$):"));
+            let novotitulo = prompt("Digite o título do jogo:");
+            let novaplataforma = prompt("Digite a plataforma (ex: PlayStation, Xbox, PC, Switch):");
+            let novogenero = prompt("Digite o gênero do jogo:");
+            let novopreco = parseFloat(prompt("Digite o preço do aluguel (R$):"));
 
-            if (novoTitulo && novaPlataforma && novoGenero && !isNaN(novoPreco))
+            if (novotitulo && novaplataforma && novogenero && !isNaN(novopreco))
             {
 
                 let novoJogo =
                 {
-                    titulo: novoTitulo,
-                    plataforma: novaPlataforma,
-                    genero: novoGenero,
-                    preco: novoPreco
+                    titulo: novotitulo,
+                    plataforma: novaplataforma,
+                    genero: novogenero,
+                    preco: novopreco
                 };
 
                 locadora.push(novoJogo);
                 alert("Jogo cadastrado com sucesso!");
-                console.log("Sucesso!" + novoJogo.titulo + " foi adicionado à locadora!");
+                console.log("\nSucesso! " + novoJogo.titulo + " foi adicionado à locadora!");
 
             } 
             else
             {
 
-                alert("Erro ao cadastrar! Dados inválidos ou campos deixados em branco.");
+                alert("Erro no cadastro! Dados inválidos ou em branco.");
                 console.log("Erro: Falha ao cadastrar o novo jogo.");
 
             }
@@ -99,7 +101,7 @@ do
 
             }
 
-            alert("A lista de jogos foi exibida no console (F12)!");
+            alert("A lista de jogos foi exibida no console.");
 
         break;
 
@@ -107,26 +109,26 @@ do
 
             console.clear();
             console.log("===== Buscando Jogo =====\n");
-            let termobusca = prompt("Digite o título ou parte do nome do Jogo que deseja buscar: ");
+            let busca = prompt("Digite o título ou parte do nome do Jogo que deseja buscar: ");
 
-            if (termobusca) 
+            if (busca) 
             {
 
-                let termominusculo = termobusca.toLowerCase();
-                let encontrouresultado = false;
+                let buscaminusculo = busca.toLowerCase();
+                let resultado = false;
 
-                console.log("Resultado para a busca: " + termobusca + ".")
+                console.log("Resultados para a busca: " + busca + ".\n")
 
                 for (let i = 0; i < locadora.length; i++)
                 {
 
                     let jogo = locadora[i];
 
-                    if (jogo.titulo.toLowerCase().includes(termominusculo))
+                    if (jogo.titulo.toLowerCase().includes(buscaminusculo))
                     {
 
                         console.log("Título: " + jogo.titulo + "\n" + "Plataforma: " + jogo.plataforma + "\n" + "Gênero: " + jogo.genero + "\n" + "Preço: " + jogo.preco.toFixed(2) + "\n")
-                        encontrouresultado = true;
+                        resultado = true;
 
                     }
 
@@ -134,7 +136,7 @@ do
 
             
 
-                if (!encontrouresultado)
+                if (!resultado)
                 {
 
                     console.log("Jogo não encontrado com esse termo.");
@@ -160,6 +162,81 @@ do
         case "4":
 
             console.clear();
+            console.log("===== REMOVER JOGO =====")
+
+            let removerjogo = prompt("Digite o nome do jogo que deseja remover: ");
+
+            if (removerjogo)
+            {
+
+                let removerjogominusculo = removerjogo.toLowerCase();
+                let resulted = false
+
+                console.log("\nResultados para a busca: " + removerjogominusculo + ".\n")
+                
+
+                for (let i = 0; i < locadora.length; i++)
+                {
+
+                    let jogo = locadora[i];
+
+                    if(jogo.titulo.toLowerCase().includes(removerjogominusculo))
+                    {
+
+                        console.log("ID: " + (i + 1) + "\nTítulo: " + jogo.titulo + "\n" + "Plataforma: " + jogo.plataforma + "\n" + "Gênero: " + jogo.genero + "\n" + "Preço: " + jogo.preco.toFixed(2) + "\n")
+                        resulted = true;
+
+                    }
+
+                }
+
+                if(resulted)
+                {
+
+                    alert("Os jogos encontrados foram listados com seus respectivos IDs");
+                    let idescolhido = parseInt(prompt("Digite o ID do jogo no qual deseja remover definitivamente: "));
+
+                    if(!isNaN(idescolhido))
+                    {
+
+                        let idreal = idescolhido - 1;
+                        let jogoremovido = locadora[idreal].titulo;
+                        locadora.splice(idreal, 1);
+
+                        alert("O jogo " + jogoremovido + " foi removido com sucesso da locadora.");
+                        console.log("Jogo removido com sucesso.")
+
+                    }
+                    else
+                    {
+
+                        alert("ID inválido! Operação cancelada.")
+                        console.log("Erro: ID digitado não corresponde a nenhum jogo.")
+
+                    }
+
+                }
+                else
+                {
+
+                    alert("Nenhum jogo foi encontrado com o termo: " + removerjogo + ".");
+                    console.log("Erro: O termo de busca não retornou resultados.")
+
+                }
+
+            }
+            else
+            {
+
+                alert("Operaçao cancelada ou termo em branco.");
+
+            }
+
+        break;
+
+        case "5":
+
+            console.clear();
             alert("Assim a história de Dragon Ball chega ao FIM!\n\nSistema finalizado com sucesso.")
             
             console.log
@@ -174,12 +251,14 @@ do
 
         break;
 
-			default: 
-            alert("Opção inválida! Digite um número de 1 a 4.");
-            break;
+		default: 
+
+            alert("Opção inválida. Escolha entre as opções de [1] a [5].");
+
+        break;
             
             
             
-        }
-    } while (op !== "4");
+    }
+} while (op !== "5");
     
